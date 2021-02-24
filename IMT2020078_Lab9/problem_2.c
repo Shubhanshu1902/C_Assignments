@@ -30,7 +30,7 @@ int main()
         printf("%04d ",students[i].roll_no);    //printing roll number 
         printf("%s ",students[i].name);         //printing student name
         
-        //Checking Grades 
+        //Checking Grades of student  
         if (students[i].s1>=avg1)                
             printf("A ");
         else
