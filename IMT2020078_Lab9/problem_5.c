@@ -10,13 +10,13 @@ typedef struct node
 
 void add_values(int n, node **head)
 {
-	node* ns;
-	ns=(node *)malloc(sizeof(node));
+	node *ns;
+	ns = (node *)malloc(sizeof(node));
 	ns->value = n;
 	ns->next = NULL;
 	if (*head == NULL)
 	{
-		*head=ns;
+		*head = ns;
 		return;
 	}
 	node *temp = *head;
@@ -29,6 +29,10 @@ void add_values(int n, node **head)
 
 void print_list(node *head)
 {
+	if (head == NULL)
+	{
+		printf("NULL");
+	}
 	node *temp = head;
 	while (temp != NULL)
 	{
@@ -37,24 +41,15 @@ void print_list(node *head)
 	}
 	return;
 }
-void even_elements(node **head)
+void even_elements(node **head, node **head2)
 {
-	node *temp=*head;
-	if (temp==NULL)
+	node *temp = *head;
+	while (temp != NULL)
 	{
-		return;
+		if (temp->value % 2 == 0)
+			add_values(temp->value, head2);
+		temp = temp->next;
 	}
-	while (temp!=NULL)
-	{
-		if (temp->value%2!=0)
-		{
-			free(temp);
-		}
-		else
-			
-	}
-	
-
 }
 
 int main()
@@ -66,9 +61,12 @@ int main()
 		scanf("%d", &n);
 		if (n == -999)
 			break;
-		add_values(n,&head);
+		add_values(n, &head);
 	}
-	//printf("%d\n",head->value);
+	node *head2 = NULL;
 	print_list(head);
+	printf("\n");
+	even_elements(&head, &head2);
+	print_list(head2);
 	return 0;
 }
